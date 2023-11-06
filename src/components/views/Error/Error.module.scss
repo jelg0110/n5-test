@@ -1,0 +1,20 @@
+@use "/src/assets/css/variables.scss";
+
+.Error {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: variables.$spacing;
+
+    &__title {
+        color: red;
+        margin: 0;
+    }
+
+    &__subtitle, &__text {
+        margin: 0;
+    }
+}
