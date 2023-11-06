@@ -1,7 +1,7 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import styles from './Error.module.scss';
 
-export default function Error() {
+export default function ErrorComponent() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {

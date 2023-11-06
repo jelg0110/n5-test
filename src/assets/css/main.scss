@@ -1,0 +1,26 @@
+@use "/src/assets/css/variables.scss";
+@import "normalize.css";
+@import "sanitize.css";
+
+.Button {
+  padding: variables.$spacing (variables.$spacing * 2);
+  background-color: variables.$primary;
+  color: variables.$white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$primary-dark;
+  }
+
+  &__outlined {
+    background-color: transparent;
+    border: 1px solid variables.$primary;
+    color: variables.$font-color;
+
+    &:hover {
+      border-color: variables.$primary-dark;
+    }
+  }
+}
