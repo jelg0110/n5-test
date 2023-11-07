@@ -12,6 +12,20 @@ const getError = (error: Error | Response) => {
   return 'There was an error with your request, try again';
 }
 
+const setLocalStorage = (key: string, data: any) => {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+const getLocalStorage = (key: string) => {
+  const data = localStorage.getItem(key);
+  if (data) {
+    return JSON.parse(data);
+  }
+  return undefined;
+}
+
 export {
   getError,
+  setLocalStorage,
+  getLocalStorage
 };

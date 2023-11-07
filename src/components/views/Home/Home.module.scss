@@ -3,7 +3,8 @@
 .Product {
   background-color: variables.$background;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 
   &__card_container {
     display: flex;
@@ -11,6 +12,11 @@
     align-items: flex-start;
     padding: variables.$spacing * 2;
     gap: variables.$spacing * 2;
+
+    h2 {
+      margin: 0;
+      flex-basis: 100%;
+    }
   }
 
   &__card_item {
@@ -51,7 +57,32 @@
     word-break: break-all;
   }
 
-  button {
-    margin-top: variables.$spacing;
+  &__amountContainer {
+    margin-bottom: variables.$spacing;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__amount_input {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: variables.$spacing;
+
+    input {
+      width: 50px;
+      font-weight: bold;
+      padding: 0 variables.$spacing;
+
+      &:invalid {
+        border-color: variables.$error;
+      }
+    }
+  }
+
+  &__requestedAmount {
+    font-weight: 600;
+    color: variables.$error;
   }
 }

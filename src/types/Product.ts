@@ -3,4 +3,5 @@ export interface Product {
   price: number;
   amount: number;
   id: number;
+  requestedAmount?: number;
 }

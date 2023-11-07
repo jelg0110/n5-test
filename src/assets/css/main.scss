@@ -7,11 +7,18 @@
   background-color: variables.$primary;
   color: variables.$white;
   font-size: 1rem;
+  border-radius: variables.$spacing;
   border: none;
   cursor: pointer;
 
   &:hover {
     background-color: variables.$primary-dark;
+  }
+
+  &:disabled {
+    background-color: variables.$primary;
+    opacity: 0.5;
+    cursor: default;
   }
 
   &__outlined {
@@ -22,5 +29,124 @@
     &:hover {
       border-color: variables.$primary-dark;
     }
+  }
+
+  &__icon {
+    padding: variables.$spacing;
+
+    &__trash {
+      padding: 8px 12.5px;
+    }
+  }
+
+  &--success {
+    background-color: variables.$success;
+
+    &:hover {
+      background-color: variables.$success-dark;
+    }
+  }
+
+  &--error {
+    background-color: variables.$error;
+
+    &:hover {
+      background-color: variables.$error-dark;
+    }
+  }
+}
+
+.check-icon {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 19px;
+  height: 19px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+
+  &:after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 1px;
+    top: -3px;
+    width: 6px;
+    height: 10px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+  }
+}
+
+.close-icon {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 19px;
+  height: 19px;
+  border: 2px solid transparent;
+  border-radius: 40px;
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    top: 6px;
+    left: -1px;
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.trash-icon {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 10px;
+  height: 12px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px, inset -2px 0 0, inset 2px 0 0;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  margin-top: 4px;
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+  }
+  &:after {
+    background: currentColor;
+    border-radius: 3px;
+    width: 16px;
+    height: 2px;
+    top: -4px;
+    left: -5px;
+  }
+  &:before {
+    width: 10px;
+    height: 4px;
+    border: 2px solid;
+    border-bottom: transparent;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    top: -7px;
+    left: -2px;
   }
 }
