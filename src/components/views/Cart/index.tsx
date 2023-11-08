@@ -45,7 +45,6 @@ function CartComponent() {
       }
       return item;
     });
-    console.log(newProducts);
     dispatch(setProducts(newProducts));
     setCartProducts([]);
     navigate('/');

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import List from '.';
 
 test('Render List succesfully', () => {
-  const view = render(<List items={['1', '2', '3']} content={(item) => item} />);
+  render(<List items={['1', '2', '3']} content={(item) => item} />);
 
   expect(screen.getByTestId("list")).toBeInTheDocument();
   expect(screen.getAllByTestId("listitem")).toHaveLength(3);

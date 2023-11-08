@@ -1,6 +1,6 @@
 @use "/src/assets/css/variables.scss";
 
-.Product {
+.Home {
   background-color: variables.$background;
   width: 100%;
   height: 100%;
@@ -41,7 +41,7 @@
 
   &__container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,5 +89,19 @@
   &__requestedAmount {
     font-weight: 600;
     color: variables.$error;
+  }
+}
+
+.ProductForm {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$spacing;
+
+  input {
+    display: block;
+  }
+
+  button {
+    margin-top: variables.$spacing;
   }
 }

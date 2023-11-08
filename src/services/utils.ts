@@ -24,8 +24,13 @@ const getLocalStorage = (key: string) => {
   return undefined;
 }
 
+function getRandomInteger(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 export {
   getError,
   setLocalStorage,
-  getLocalStorage
+  getLocalStorage,
+  getRandomInteger
 };

@@ -1,0 +1,44 @@
+@use "/src/assets/css/variables.scss";
+
+.Modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    background-color: variables.$background;
+    padding: variables.$spacing * 2;
+    border: 1px solid variables.$gray-3;
+    border-radius: variables.$spacing;
+    width: 300px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: variables.$spacing;
+  }
+
+  &__close {
+    color: variables.$gray-3;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: normal;
+
+    &:hover,
+    &:focus {
+      color: variables.$font-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
