@@ -3,5 +3,8 @@ export interface Product {
   price: number;
   amount: number;
   id: number;
-  requestedAmount?: number;
+}
+
+export interface CartProduct extends Product {
+  requestedAmount: number;
 }

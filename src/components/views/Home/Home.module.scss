@@ -13,9 +13,14 @@
     padding: variables.$spacing * 2;
     gap: variables.$spacing * 2;
 
-    h2 {
-      margin: 0;
+    &__header {
+      @include variables.header;
       flex-basis: 100%;
+
+      div {
+        display: flex;
+        gap: variables.$spacing * 2;
+      }
     }
   }
 

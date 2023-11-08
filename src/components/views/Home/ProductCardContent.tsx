@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import styles from './Home.module.scss';
-import { Product } from '../../../types/Product';
+import { Product, CartProduct } from '../../../types/Product';
 
 interface ProductCardContentType {
-  product: Product
+  product: Product | CartProduct
   onAmountChange: (value: number) => void,
 }
 
 function ProductCardContent({ product, onAmountChange }: ProductCardContentType) {
+  const requestedAmount = 'requestedAmount' in product ? product.requestedAmount : 0;
   const [showAmount, setShowAmount] = useState(false);
-  const [value, setValue] = useState(product.requestedAmount?.toString() || '0');
-  const isExpendedAmount = product.amount - (product.requestedAmount || 0) === 0;
+  const [value, setValue] = useState(requestedAmount.toString());
+  const isExpendedAmount = (product.amount - requestedAmount) === 0;
 
   const handleAdd = () => {
     if (isExpendedAmount) {
@@ -29,6 +30,13 @@ function ProductCardContent({ product, onAmountChange }: ProductCardContentType)
     setValue(event.target.value);
   }
 
+  const handleProductDelete = () => {
+    if (window.confirm("¿Está seguro que desea eliminar este producto de sus compras?")) {
+      onAmountChange(0);
+      setShowAmount(false);
+    }
+  }
+
   const handleSubmit = () => {
     const amount = +value;
     if (amount > 0 && amount <= product.amount) {
@@ -43,7 +51,7 @@ function ProductCardContent({ product, onAmountChange }: ProductCardContentType)
       <div className={styles.CardContent__amountContainer}>
         <span>Cantidad disponible: {product.amount || 0}</span>
         {
-          !!product.requestedAmount && <span className={styles.CardContent__requestedAmount}>- {product.requestedAmount}</span>
+          !!requestedAmount && <span className={styles.CardContent__requestedAmount}>- {requestedAmount}</span>
         }
       </div>
       {
@@ -51,8 +59,9 @@ function ProductCardContent({ product, onAmountChange }: ProductCardContentType)
           ? <button
             className={`Button ${isExpendedAmount ? 'Button--error' : ''}`}
             onClick={handleAdd}
+            disabled={product.amount === 0}
           >
-            {isExpendedAmount ? 'Quitar' : 'Agregar'}
+            {product.amount === 0 ? 'Sin inventario' : isExpendedAmount ? 'Quitar' : 'Agregar'}
           </button>
           : <div className={styles.CardContent__amount_input}>
             <button className='Button Button__icon Button--error' onClick={handleCancel}>
@@ -67,9 +76,9 @@ function ProductCardContent({ product, onAmountChange }: ProductCardContentType)
               onChange={handleInputChange}
             />
             {
-              !!product.requestedAmount && <button
+              !!requestedAmount && <button
                 className='Button Button__icon Button__icon__trash Button--error'
-                onClick={() => onAmountChange(0)}
+                onClick={handleProductDelete}
               >
                 <i className="trash-icon"></i>
               </button>

@@ -1,0 +1,14 @@
+@use "/src/assets/css/variables.scss";
+
+.List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    border: 1px solid variables.$gray-1;
+    margin-top: -1px;
+    background-color: variables.$gray-2;
+    padding: variables.$spacing;
+  }
+}

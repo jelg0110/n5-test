@@ -4,6 +4,7 @@
   background-color: variables.$white;
   padding: variables.$spacing * 2;
   border-radius: variables.$spacing;
+  box-shadow: 0 2px 3px black;
 
   &__title {
     font-weight: 600;

@@ -2,6 +2,10 @@
 @import "normalize.css";
 @import "sanitize.css";
 
+h2 {
+  margin: 0;
+}
+
 .Button {
   padding: variables.$spacing (variables.$spacing * 2);
   background-color: variables.$primary;
@@ -9,6 +13,8 @@
   font-size: 1rem;
   border-radius: variables.$spacing;
   border: none;
+  line-height: normal;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {
@@ -16,18 +22,19 @@
   }
 
   &:disabled {
-    background-color: variables.$primary;
+    background-color: variables.$primary !important;
     opacity: 0.5;
     cursor: default;
   }
 
   &__outlined {
-    background-color: transparent;
+    background-color: transparent !important;
     border: 1px solid variables.$primary;
-    color: variables.$font-color;
+    color: variables.$primary;
 
     &:hover {
       border-color: variables.$primary-dark;
+      color: variables.$primary-dark;
     }
   }
 
@@ -45,6 +52,10 @@
     &:hover {
       background-color: variables.$success-dark;
     }
+
+    &:disabled {
+      background-color: variables.$success !important;
+    }
   }
 
   &--error {
@@ -53,9 +64,14 @@
     &:hover {
       background-color: variables.$error-dark;
     }
+
+    &:disabled {
+      background-color: variables.$error !important;
+    }
   }
 }
 
+//Icons
 .check-icon {
   box-sizing: border-box;
   position: relative;
@@ -148,5 +164,76 @@
     border-top-right-radius: 2px;
     top: -7px;
     left: -2px;
+  }
+}
+
+.cart-icon {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(to left, currentColor 12px, transparent 0)
+      no-repeat -1px 6px/18px 2px,
+    linear-gradient(to left, currentColor 12px, transparent 0) no-repeat 6px
+      14px/11px 2px,
+    linear-gradient(to left, currentColor 12px, transparent 0) no-repeat 0 2px/4px
+      2px,
+    radial-gradient(circle, currentColor 60%, transparent 40%) no-repeat 12px
+      17px/4px 4px,
+    radial-gradient(circle, currentColor 60%, transparent 40%) no-repeat 6px
+      17px/4px 4px;
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 2px;
+    height: 14px;
+    background: currentColor;
+    top: 2px;
+    left: 4px;
+    transform: skew(12deg);
+  }
+  &:after {
+    height: 10px;
+    top: 6px;
+    left: 16px;
+    transform: skew(-12deg);
+  }
+}
+
+.add-icon {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  transform: scale(var(--ggs, 1));
+  border-radius: 22px;
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 5px;
+    top: 8px;
+    left: 4px;
+  }
+
+  &:after {
+    width: 2px;
+    height: 10px;
+    top: 4px;
+    left: 8px;
   }
 }
