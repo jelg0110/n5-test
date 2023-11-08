@@ -12,6 +12,7 @@ import { getError } from '../../../services/utils';
 import { setProducts, stateProducts } from '../../../store/reducers/productReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '../../../types/Product';
+import LogicTest from './LogicTest';
 
 function HomeComponent() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function HomeComponent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | Error | Response>(null);
   const [open, setOpen] = useState(false);
+  const [openLogic, setOpenLogic] = useState(false);
 
   useEffect(() => {
     if (products.length === 0) {
@@ -52,6 +54,9 @@ function HomeComponent() {
       <div className={styles.Home__card_container__header}>
         <h2>Lista de Productos</h2>
         <div>
+          <button className='Button Button__outlined Button__icon' onClick={() => setOpenLogic(true)}>
+            <i className="invert-icon"></i>
+          </button>
           <button className='Button Button__outlined Button__icon' onClick={() => setOpen(true)}>
             <i className="add-icon"></i>
           </button>
@@ -62,6 +67,9 @@ function HomeComponent() {
       </div>
       <Modal open={open} handleClose={() => setOpen(false)} title='Nuevo Producto'>
         <NewProduct open={open} onSubmit={handleSubmit} />
+      </Modal>
+      <Modal open={openLogic} handleClose={() => setOpenLogic(false)} title='Test de Lógica'>
+        <LogicTest open={openLogic} />
       </Modal>
       {
         products.map((prod, index) => <div
